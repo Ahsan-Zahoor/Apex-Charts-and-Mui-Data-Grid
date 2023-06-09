@@ -1,9 +1,4 @@
-import {
-  DataGrid,
-  GridToolbar,
-  getGridNumericOperators,
-  getGridDateOperators,
-} from "@mui/x-data-grid";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 
 const GridTable = ({ data, columns }) => {
   return (

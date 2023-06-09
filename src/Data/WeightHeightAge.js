@@ -150,8 +150,10 @@ const WeightAgeData = [
     female: { startRange: 99.8, endRange: 121.5, unit: "kg" },
   },
   {
-    height: { startRange: 213, unit: "cm" },
+    height: { startRange: 213, endRange: 235, unit: "cm" },
     male: { startRange: 89.8, endRange: 109.7, unit: "kg" },
     female: { startRange: 102, endRange: 124.7, unit: "kg" },
   },
 ];
+
+export default WeightAgeData;

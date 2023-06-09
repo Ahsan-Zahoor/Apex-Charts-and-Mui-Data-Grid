@@ -6,6 +6,7 @@ import Paper from "@mui/material/Paper";
 import Graph from "./Graph";
 import GridTable from "./DataGrid";
 import graphsData from "../Data/GraphsDataRaw";
+import weightHeightAge from "../Data/WeightHeightAge";
 import {
   getGridNumericOperators,
   getGridDateOperators,
@@ -90,7 +91,6 @@ const Home = () => {
 
     return extractedValues;
   }, [vitals, vitals_physical, loicCodes, units]);
-  // const result = extractedValues.groupBy(({ date }) => date);
 
   const sortedData = useMemo(() => {
     let res = {};
@@ -101,7 +101,6 @@ const Home = () => {
         res[obj.date] = [obj];
       }
     });
-    // console.log("extracted vitals ", res);
 
     const sortedData = {};
     const sortedKeys = Object.keys(res).sort((a, b) => {
@@ -116,261 +115,16 @@ const Home = () => {
     return sortedData;
   }, [extractedValues]);
 
-  // console.log("Sorted Data : ", sortedData);
-
-  const weightResults = (height, weight) => {
-    let result = [];
-    if (height < 137) {
-      return (result =
-        weight >= 28.5 && weight <= 34.9
-          ? { weight: "28.5 - 34.9kg", res: "Normal Weight" }
-          : weight < 28.5
-          ? { weight: "28.5 - 34.9kg", res: "Under Weight" }
-          : { weight: "28.5 - 34.9kg", res: "Over Weight" });
-    }
-    if (height < 140) {
-      return (result =
-        weight >= 30.8 && weight <= 37.6
-          ? { weight: "30.8 - 37.6kg", res: "Normal Weight" }
-          : weight < 30.8
-          ? { weight: "30.8 - 37.6kg", res: "Under Weight" }
-          : { weight: "30.8 - 37.6kg", res: "Over Weight" });
-    }
-    if (height < 142) {
-      return (result =
-        weight >= 32.6 && weight <= 39.9
-          ? { weight: "32.6 - 39.9kg", res: "Normal Weight" }
-          : weight < 32.6
-          ? { weight: "32.6 - 39.9kg", res: "Under Weight" }
-          : { weight: "32.6 - 39.9kg", res: "Over Weight" });
-    }
-    if (height < 145) {
-      return (result =
-        weight >= 34.9 && weight <= 42.6
-          ? { weight: "34.9 - 42.6kg", res: "Normal Weight" }
-          : weight < 34.9
-          ? { weight: "34.9 - 42.6kg", res: "Under Weight" }
-          : { weight: "34.9 - 42.6kg", res: "Over Weight" });
-    }
-    if (height < 147) {
-      return (result =
-        weight >= 36.4 && weight <= 44.9
-          ? { weight: "36.4 - 44.9kg", res: "Normal Weight" }
-          : weight < 36.4
-          ? { weight: "36.4 - 44.9kg", res: "Under Weight" }
-          : { weight: "36.4 - 44.9kg", res: "Over Weight" });
-    }
-    if (height < 150) {
-      return (result =
-        weight >= 39 && weight <= 47.6
-          ? { weight: "39 - 47.6kg", res: "Normal Weight" }
-          : weight < 39
-          ? { weight: "39 - 47.6kg", res: "Under Weight" }
-          : { weight: "39 - 47.6kg", res: "Over Weight" });
-    }
-    if (height < 152) {
-      return (result =
-        weight >= 40.8 && weight <= 49.9
-          ? { weight: "40.8 - 49.9kg", res: "Normal Weight" }
-          : weight < 40.8
-          ? { weight: "40.8 - 49.9kg", res: "Under Weight" }
-          : { weight: "40.8 - 49.9kg", res: "Over Weight" });
-    }
-    if (height < 157) {
-      return (result =
-        weight >= 43.1 && weight <= 52.6
-          ? { weight: "43.1 - 52.6kg", res: "Normal Weight" }
-          : weight < 43.1
-          ? { weight: "43.1 - 52.6kg", res: "Under Weight" }
-          : { weight: "43.1 - 52.6kg", res: "Over Weight" });
-    }
-    if (height < 160) {
-      return (result =
-        weight >= 44.9 && weight <= 54.9
-          ? { weight: "44.9 - 54.9kg", res: "Normal Weight" }
-          : weight < 44.9
-          ? { weight: "44.9 - 54.9kg", res: "Under Weight" }
-          : { weight: "44.9 - 54.9kg", res: "Over Weight" });
-    }
-    if (height < 163) {
-      return (result =
-        weight >= 47.2 && weight <= 57.6
-          ? { weight: "47.2 - 57.6kg", res: "Normal Weight" }
-          : weight < 47.2
-          ? { weight: "47.2 - 57.6kg", res: "Under Weight" }
-          : { weight: "47.2 - 57.6kg", res: "Over Weight" });
-    }
-    if (height < 165) {
-      return (result =
-        weight >= 49 && weight <= 59.9
-          ? { weight: "49 - 59.9kg", res: "Normal Weight" }
-          : weight < 49
-          ? { weight: "49 - 59.9kg", res: "Under Weight" }
-          : { weight: "49 - 59.9kg", res: "Over Weight" });
-    }
-    if (height < 168) {
-      return (result =
-        weight >= 51.2 && weight <= 62.6
-          ? { weight: "51.2 - 62.6kg", res: "Normal Weight" }
-          : weight < 51.2
-          ? { weight: "51.2 - 62.6kg", res: "Under Weight" }
-          : { weight: "51.2 - 62.6kg", res: "Over Weight" });
-    }
-    if (height < 168) {
-      return (result =
-        weight >= 53 && weight <= 64.8
-          ? { weight: "53 - 64.8kg", res: "Normal Weight" }
-          : weight < 53
-          ? { weight: "53 - 64.8kg", res: "Under Weight" }
-          : { weight: "53 - 64.8kg", res: "Over Weight" });
-    }
-    if (height < 170) {
-      return (result =
-        weight >= 55.3 && weight <= 67.6
-          ? { weight: "55.3 - 67.6kg", res: "Normal Weight" }
-          : weight < 55.3
-          ? { weight: "55.3 - 67.6kg", res: "Under Weight" }
-          : { weight: "55.3 - 67.6kg", res: "Over Weight" });
-    }
-    if (height < 173) {
-      return (result =
-        weight >= 57.1 && weight <= 69.8
-          ? { weight: "57.1 - 69.8kg", res: "Normal Weight" }
-          : weight < 57.1
-          ? { weight: "57.1 - 69.8kg", res: "Under Weight" }
-          : { weight: "57.1 - 69.8kg", res: "Over Weight" });
-    }
-    if (height < 175) {
-      return (result =
-        weight >= 59.4 && weight <= 72.6
-          ? { weight: "59.4 - 72.6kg", res: "Normal Weight" }
-          : weight < 59.4
-          ? { weight: "59.4 - 72.6kg", res: "Under Weight" }
-          : { weight: "59.4 - 72.6kg", res: "Over Weight" });
-    }
-    if (height < 178) {
-      return (result =
-        weight >= 61.2 && weight <= 74.8
-          ? { weight: "61.2 - 74.8kg", res: "Normal Weight" }
-          : weight < 61.2
-          ? { weight: "61.2 - 74.8kg", res: "Under Weight" }
-          : { weight: "61.2 - 74.8kg", res: "Over Weight" });
-    }
-    if (height < 180) {
-      return (result =
-        weight >= 63.5 && weight <= 77.5
-          ? { weight: "63.5 - 77.5kg", res: "Normal Weight" }
-          : weight < 63.5
-          ? { weight: "63.5 - 77.5kg", res: "Under Weight" }
-          : { weight: "63.5 - 77.5kg", res: "Over Weight" });
-    }
-    if (height < 183) {
-      return (result =
-        weight >= 65.3 && weight <= 79.8
-          ? { weight: "65.3 - 79.8kg", res: "Normal Weight" }
-          : weight < 65.3
-          ? { weight: "65.3 - 79.8kg", res: "Under Weight" }
-          : { weight: "65.3 - 79.8kg", res: "Over Weight" });
-    }
-    if (height < 185) {
-      return (result =
-        weight >= 67.6 && weight <= 82.5
-          ? { weight: "67.6 - 82.5kg", res: "Normal Weight" }
-          : weight < 67.6
-          ? { weight: "67.6 - 82.5kg", res: "Under Weight" }
-          : { weight: "67.6 - 82.5kg", res: "Over Weight" });
-    }
-    if (height < 188) {
-      return (result =
-        weight >= 69.4 && weight <= 84.8
-          ? { weight: "69.4 - 84.8kg", res: "Normal Weight" }
-          : weight < 69.4
-          ? { weight: "69.4 - 84.8kg", res: "Under Weight" }
-          : { weight: "69.4 - 84.8kg", res: "Over Weight" });
-    }
-    if (height < 191) {
-      return (result =
-        weight >= 71.6 && weight <= 87.5
-          ? { weight: "71.6 - 87.5kg", res: "Normal Weight" }
-          : weight < 71.6
-          ? { weight: "71.6 - 87.5kg", res: "Under Weight" }
-          : { weight: "71.6 - 87.5kg", res: "Over Weight" });
-    }
-    if (height < 193) {
-      return (result =
-        weight >= 73.5 && weight <= 89.8
-          ? { weight: "73.5 - 89.8kg", res: "Normal Weight" }
-          : weight < 73.5
-          ? { weight: "73.5 - 89.8kg", res: "Under Weight" }
-          : { weight: "73.5 - 89.8kg", res: "Over Weight" });
-    }
-    if (height < 195) {
-      return (result =
-        weight >= 75.7 && weight <= 92.5
-          ? { weight: "75.7 - 92.5kg", res: "Normal Weight" }
-          : weight < 75.7
-          ? { weight: "75.7 - 92.5kg", res: "Under Weight" }
-          : { weight: "75.7 - 92.5kg", res: "Over Weight" });
-    }
-    if (height < 198) {
-      return (result =
-        weight >= 77.5 && weight <= 94.8
-          ? { weight: "77.5 - 94.8kg", res: "Normal Weight" }
-          : weight < 77.5
-          ? { weight: "77.5 - 94.8kg", res: "Under Weight" }
-          : { weight: "77.5 - 94.8kg", res: "Over Weight" });
-    }
-    if (height < 201) {
-      return (result =
-        weight >= 79.8 && weight <= 97.5
-          ? { weight: "79.8 - 97.5kg", res: "Normal Weight" }
-          : weight < 79.8
-          ? { weight: "79.8 - 97.5kg", res: "Under Weight" }
-          : { weight: "79.8 - 97.5kg", res: "Over Weight" });
-    }
-    if (height < 203) {
-      return (result =
-        weight >= 81.6 && weight <= 99.8
-          ? { weight: "81.6 - 99.8kg", res: "Normal Weight" }
-          : weight < 81.6
-          ? { weight: "81.6 - 99.8kg", res: "Under Weight" }
-          : { weight: "81.6 - 99.8kg", res: "Over Weight" });
-    }
-    if (height < 205) {
-      return (result =
-        weight >= 3.9 && weight <= 102.5
-          ? { weight: "83.9 - 102.5kg", res: "Normal Weight" }
-          : weight < 3.9
-          ? { weight: "83.9 - 102.5kg", res: "Under Weight" }
-          : { weight: "83.9 - 102.5kg", res: "Over Weight" });
-    }
-    if (height < 208) {
-      return (result =
-        weight >= 5.7 && weight <= 104.8
-          ? { weight: "85.7  104.8kg", res: "Normal Weight" }
-          : weight < 5.7
-          ? { weight: "85.7 - 104.8kg", res: "Under Weight" }
-          : { weight: "85.7 - 104.8kg", res: "Over Weight" });
-    }
-    if (height < 210) {
-      return (result =
-        weight >= 88 && weight <= 107.5
-          ? { weight: "88 - 107.5kg", res: "Normal Weight" }
-          : weight < 88
-          ? { weight: "88 - 107.5kg", res: "Under Weight" }
-          : { weight: "88 - 107.5kg", res: "Over Weight" });
-    }
-    if (height < 213) {
-      return (result =
-        weight >= 9.8 && weight <= 109.7
-          ? { weight: "89.8 - 109.7kg", res: "Normal Weight" }
-          : weight < 9.8
-          ? { weight: "89.8 - 109.7kg", res: "Under Weight" }
-          : { weight: "89.8 - 109.7kg", res: "Over Weight" });
-    } else {
-      return (result = { weight: "Unavaiable", res: "-" });
-    }
+  const weightResults = (heightInput, gender = "male") => {
+    let res = weightHeightAge.find(
+      ({ height }) =>
+        heightInput >= height.startRange && heightInput <= height.endRange
+    );
+    if (res != undefined) return res[gender];
+    else return null;
   };
+
+  //   console.log(weightResults(141));
 
   const [
     bp_systolic,
@@ -420,13 +174,28 @@ const Home = () => {
         bmiData.push({ x: date, y: bmi_value.value });
       }
       if (height_value && weight_value && bmi_value) {
+        let res = weightResults(height_value.value, "male");
+        let colFiveAns = "Not Availale";
+        if (res != null) {
+          if (
+            weight_value.value >= res.startRange &&
+            weight_value.value <= res.endRange
+          )
+            colFiveAns = "Normal Weight";
+          else if (weight_value.value < res.startRange)
+            colFiveAns = "Under Weight";
+          else colFiveAns = "Over Weight";
+        }
+
         heightWeightData.push({
           id: date,
           col1: height_value.value,
           col2: weight_value.value,
           col3: bmi_value.value,
-          col4: weightResults(height_value.value, weight_value.value).weight,
-          col5: weightResults(height_value.value, weight_value.value).res,
+          col4: res
+            ? `(${res.startRange}-${res.endRange} ${res.unit})`
+            : "Not Available",
+          col5: colFiveAns,
         });
       }
     });
@@ -440,11 +209,6 @@ const Home = () => {
       heightWeightData,
     ];
   }, [sortedData]);
-  //   console.log(heightWeightData);
-
-  // console.log("systolic series", bp_systolic, bp_diastolic);
-  // console.log("height ", heightData);
-  // console.log("weight ", weightData)
 
   const bpSeries = [
     {
@@ -581,8 +345,6 @@ const Home = () => {
     { field: "col4", headerName: "Weight Expected Range", width: 170 },
     { field: "col5", headerName: "Results", width: 150 },
   ];
-
-  // console.log(heightWeightData);
 
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
