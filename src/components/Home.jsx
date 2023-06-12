@@ -124,8 +124,6 @@ const Home = () => {
     else return null;
   };
 
-  //   console.log(weightResults(141));
-
   const [
     bp_systolic,
     bp_diastolic,
